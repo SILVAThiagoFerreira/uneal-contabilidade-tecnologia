@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Apresentação UNEAL sobre contabilidade, tecnologia e futuro da profissão."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Contabilidade, Tecnologia e Futuro da Profissão</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="topbar__copy">
+          <span class="eyebrow">Apresentação digital</span>
+          <h1>Contabilidade, tecnologia e futuro da profissão</h1>
+        </div>
+
+        <img class="brand" src="visual/images.png" alt="Logo da UNEAL" />
+      </header>
+
+      <main class="main">
+        <section class="viewer" aria-label="Galeria de imagens">
+          <div class="viewer__chrome">
+            <p>Deslize para a direita</p>
+            <p class="counter" aria-live="polite"><strong data-current>01</strong>/<span data-total>02</span></p>
+          </div>
+
+          <div class="carousel" data-carousel tabindex="0">
+            <article class="slide" data-slide>
+              <figure class="frame">
+                <img
+                  src="input/1.png"
+                  alt="Slide 1 sobre contabilidade, tecnologia e futuro da profissão"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+              </figure>
+            </article>
+
+            <article class="slide" data-slide>
+              <figure class="frame">
+                <img
+                  src="input/2.png"
+                  alt="Slide 2 sobre como a tecnologia mudou a contabilidade"
+                  loading="lazy"
+                />
+              </figure>
+            </article>
+          </div>
+
+          <div class="viewer__controls" aria-label="Controles da apresentação">
+            <button class="nav" type="button" data-prev>Anterior</button>
+
+            <div class="dots" role="tablist" aria-label="Selecionar imagem">
+              <button class="dot" type="button" data-dot="0" aria-label="Abrir imagem 1"></button>
+              <button class="dot" type="button" data-dot="1" aria-label="Abrir imagem 2"></button>
+            </div>
+
+            <button class="nav" type="button" data-next>Próxima</button>
+          </div>
+        </section>
+
+        <section class="share" aria-label="QR code para compartilhar">
+          <div class="share__copy">
+            <span class="eyebrow">Compartilhamento</span>
+            <h2>QR code para abrir a apresentação no celular</h2>
+            <p>
+              Use este código para compartilhar a página em materiais impressos, grupos e redes sociais.
+            </p>
+          </div>
+
+          <a class="share__qr" href="share/qr-code.svg" download>
+            <img src="share/qr-code.svg" alt="QR code da apresentação" />
+            <span>Baixar QR code</span>
+          </a>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
