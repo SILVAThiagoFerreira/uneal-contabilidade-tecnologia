@@ -5,6 +5,8 @@ const currentLabel = document.querySelector('[data-current]');
 const totalLabel = document.querySelector('[data-total]');
 const prevButton = document.querySelector('[data-prev]');
 const nextButton = document.querySelector('[data-next]');
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const mobileMotionQuery = window.matchMedia('(max-width: 760px)');
 
 if (totalLabel) {
   totalLabel.textContent = String(slides.length).padStart(2, '0');
@@ -21,12 +23,28 @@ const scrollToIndex = (index) => {
 
   carousel.scrollTo({
     left: targetSlide.offsetLeft - (carousel.clientWidth - targetSlide.offsetWidth) / 2,
-    behavior: 'smooth',
+    behavior: reducedMotionQuery.matches ? 'auto' : 'smooth',
   });
+};
+
+const getMotionProfile = () => {
+  const mobile = mobileMotionQuery.matches;
+  const reduced = reducedMotionQuery.matches;
+
+  if (reduced) {
+    return { tilt: 0, lift: 0, scale: 0, opacity: 0 };
+  }
+
+  if (mobile) {
+    return { tilt: 7, lift: 4, scale: 0.035, opacity: 0.08 };
+  }
+
+  return { tilt: 16, lift: 10, scale: 0.06, opacity: 0.12 };
 };
 
 const updateCarousel = () => {
   rafId = 0;
+  const motion = getMotionProfile();
 
   const center = carousel.scrollLeft + carousel.clientWidth / 2;
   let closest = Infinity;
@@ -41,10 +59,10 @@ const updateCarousel = () => {
       activeIndex = index;
     }
 
-    const tilt = clamp(distance * 16, -16, 16);
-    const lift = clamp(-absDistance * 10 + 2, -8, 2);
-    const scale = 1 - Math.min(absDistance, 1) * 0.06;
-    const opacity = 1 - Math.min(absDistance, 1) * 0.12;
+    const tilt = clamp(distance * motion.tilt, -motion.tilt, motion.tilt);
+    const lift = clamp(-absDistance * motion.lift + 2, -motion.lift, 2);
+    const scale = 1 - Math.min(absDistance, 1) * motion.scale;
+    const opacity = 1 - Math.min(absDistance, 1) * motion.opacity;
 
     slide.style.setProperty('--tilt', `${tilt}deg`);
     slide.style.setProperty('--lift', `${lift}px`);

@@ -1,6 +1,6 @@
 # Contabilidade, Tecnologia e Futuro da Profissão
 
-Site estático para a apresentação da UNEAL, com navegação horizontal por swipe, tema branco e QR code para compartilhamento.
+Site estático para a apresentação da UNEAL, com navegação horizontal por swipe e foco total em celular.
 
 ## Arquivos principais
 
@@ -9,4 +9,3 @@ Site estático para a apresentação da UNEAL, com navegação horizontal por sw
 - `app.js`
 - `input/`
 - `visual/images.png`
-- `share/qr-code.svg`
